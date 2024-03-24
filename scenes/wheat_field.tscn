@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxkgd1ampq3op"]
+
+[ext_resource type="Script" path="res://scripts/wheat_field.gd" id="1_gtxnl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkrs2"]
+albedo_color = Color(0.94902, 0.780392, 0.243137, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jix6b"]
+material = SubResource("StandardMaterial3D_pkrs2")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7a7g"]
+size = Vector3(1, 0.5, 1)
+
+[node name="WheatField" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+script = ExtResource("1_gtxnl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jix6b")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
+visible = false
+
+[node name="PlayerDetector" type="Area3D" parent="MeshInstance3D"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/PlayerDetector"]
+shape = SubResource("BoxShape3D_k7a7g")
+
+[connection signal="body_entered" from="MeshInstance3D/PlayerDetector" to="." method="_on_player_detector_body_entered"]

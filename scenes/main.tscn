@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjqybdyko8x06"]
+
+[ext_resource type="PackedScene" uid="uid://cucab56fvc1v" path="res://scenes/world_level.tscn" id="1_nwyes"]
+[ext_resource type="PackedScene" uid="uid://3kffmbt7cidv" path="res://scenes/player.tscn" id="2_3lr4j"]
+[ext_resource type="Script" path="res://scripts/WheatLabel.gd" id="4_ps1jn"]
+
+[node name="main" type="Node"]
+
+[node name="WorldLevel" parent="." instance=ExtResource("1_nwyes")]
+
+[node name="Player" parent="." instance=ExtResource("2_3lr4j")]
+
+[node name="CameraPivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WheatLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Wheat eaten: "
+script = ExtResource("4_ps1jn")

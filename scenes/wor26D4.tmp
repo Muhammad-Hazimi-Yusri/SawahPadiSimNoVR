@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://cucab56fvc1v"]
+
+[ext_resource type="Texture2D" uid="uid://b5ybx8urdo7lp" path="res://assets/testFloor.png" id="1_k8yxx"]
+[ext_resource type="PackedScene" uid="uid://cxkgd1ampq3op" path="res://scenes/wheat_field.tscn" id="2_84rxh"]
+[ext_resource type="Script" path="res://scripts/BedrockMesh.gd" id="2_yiy2i"]
+[ext_resource type="PackedScene" uid="uid://dbmscitg1jw2i" path="res://scenes/bad_wheat_field.tscn" id="4_k2wgx"]
+[ext_resource type="PackedScene" uid="uid://c1cj4tpysolea" path="res://scenes/obstacles.tscn" id="5_l7v27"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qbwha"]
+height = 1.0
+radius = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rpta"]
+albedo_texture = ExtResource("1_k8yxx")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mbc4m"]
+material = SubResource("StandardMaterial3D_7rpta")
+top_radius = 100.0
+bottom_radius = 100.0
+height = 1.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xodtw"]
+sky_top_color = Color(0.352941, 0.376471, 0.858824, 1)
+sky_horizon_color = Color(0.752941, 0.592157, 0.772549, 1)
+
+[sub_resource type="Sky" id="Sky_4skay"]
+sky_material = SubResource("ProceduralSkyMaterial_xodtw")
+
+[sub_resource type="Environment" id="Environment_3fcgl"]
+background_mode = 2
+sky = SubResource("Sky_4skay")
+
+[node name="WorldLevel" type="Node3D"]
+
+[node name="Bedrock" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bedrock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_qbwha")
+
+[node name="BedrockMesh" type="MeshInstance3D" parent="Bedrock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0611877, -0.36861, -0.139446)
+mesh = SubResource("CylinderMesh_mbc4m")
+script = ExtResource("2_yiy2i")
+wheat_stalk_scene = ExtResource("2_84rxh")
+bad_wheat_stalk_scene = ExtResource("4_k2wgx")
+obstacles = ExtResource("5_l7v27")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 20, 0)
+light_color = Color(0.941176, 0.819608, 0.596078, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3fcgl")
