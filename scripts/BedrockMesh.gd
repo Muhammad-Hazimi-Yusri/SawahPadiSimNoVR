@@ -2,7 +2,7 @@
 extends Node3D
 
 # Properties
-@export var field_size := Vector2(50, 50)  # Size of the wheat field (x, y)
+@export var field_size := Vector2(45, 45)  # Size of the wheat field (x, y)
 @export var wheat_density := 0.5  # Density of wheat stalks (0.0 to 1.0)
 @export var wheat_height_range := Vector2(1.0, 2.0)  # Minimum and maximum height of wheat stalks
 @export var wheat_spawn_chance := 0.2
