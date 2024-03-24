@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cucab56fvc1v"]
+[gd_scene load_steps=15 format=3 uid="uid://cucab56fvc1v"]
 
 [ext_resource type="Texture2D" uid="uid://b5ybx8urdo7lp" path="res://assets/testFloor.png" id="1_k8yxx"]
 [ext_resource type="PackedScene" uid="uid://cxkgd1ampq3op" path="res://scenes/wheat_field.tscn" id="2_84rxh"]
 [ext_resource type="Script" path="res://scripts/BedrockMesh.gd" id="2_yiy2i"]
 [ext_resource type="PackedScene" uid="uid://dbmscitg1jw2i" path="res://scenes/bad_wheat_field.tscn" id="4_k2wgx"]
 [ext_resource type="PackedScene" uid="uid://c1cj4tpysolea" path="res://scenes/obstacles.tscn" id="5_l7v27"]
+[ext_resource type="PackedScene" uid="uid://bj1oxv2kmn0k6" path="res://scenes/enemies.tscn" id="6_e7m86"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qbwha"]
 height = 1.0
@@ -31,6 +32,13 @@ sky_material = SubResource("ProceduralSkyMaterial_xodtw")
 background_mode = 2
 sky = SubResource("Sky_4skay")
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_4gq1q"]
+vertices = PackedVector3Array(-49.5, 0.5, -49.5, -49.5, 0.5, 49.5, 49.5, 0.5, 49.5, 49.5, 0.5, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_udi3j"]
+size = Vector2(100, 100)
+
 [node name="WorldLevel" type="Node3D"]
 
 [node name="Bedrock" type="StaticBody3D" parent="."]
@@ -48,6 +56,7 @@ script = ExtResource("2_yiy2i")
 wheat_stalk_scene = ExtResource("2_84rxh")
 bad_wheat_stalk_scene = ExtResource("4_k2wgx")
 obstacles = ExtResource("5_l7v27")
+enemies = ExtResource("6_e7m86")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 20, 0)
@@ -56,3 +65,9 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3fcgl")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_4gq1q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_udi3j")

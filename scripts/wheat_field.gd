@@ -13,7 +13,10 @@ func _process(delta):
 func wheat_eat():
 	#wheat_ate.emit()
 	Globals.wheat_eaten += 1
+	if Globals.health_points <= Globals.max_hp - 0.05:
+		Globals.health_points += 0.05
 	print("Wheat eaten, now at: " + str(Globals.wheat_eaten))
+	print("HP += 0.05, now at: " + str(Globals.health_points))
 	queue_free()
 
 

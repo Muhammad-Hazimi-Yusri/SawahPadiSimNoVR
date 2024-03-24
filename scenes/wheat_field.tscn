@@ -23,7 +23,7 @@ mesh = SubResource("BoxMesh_jix6b")
 visible = false
 
 [node name="PlayerDetector" type="Area3D" parent="MeshInstance3D"]
-collision_layer = 0
+collision_layer = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/PlayerDetector"]
 shape = SubResource("BoxShape3D_k7a7g")

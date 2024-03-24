@@ -2,7 +2,7 @@
 extends Node3D
 
 # Properties
-@export var field_size := Vector2(100, 100)  # Size of the wheat field (x, y)
+@export var field_size := Vector2(50, 50)  # Size of the wheat field (x, y)
 @export var wheat_density := 0.5  # Density of wheat stalks (0.0 to 1.0)
 @export var wheat_height_range := Vector2(1.0, 2.0)  # Minimum and maximum height of wheat stalks
 @export var wheat_spawn_chance := 0.2
@@ -11,6 +11,7 @@ extends Node3D
 @export var wheat_stalk_scene: PackedScene
 @export var bad_wheat_stalk_scene : PackedScene
 @export var obstacles: PackedScene
+@export var enemies: PackedScene
 
 func _ready():
 	generate_wheat_field()
@@ -24,8 +25,18 @@ func generate_wheat_field():
 	for x in range(field_size.x):
 		for y in range(field_size.y):
 			var random_num = randf()
-			# spawn obstacles at /3 the chance
-			if random_num < wheat_spawn_chance/3:
+			# spawn enemies at /9 the chance
+			if Vector3(x - field_size.x / 2, 1.25, y - field_size.y / 2) == global_position:
+				continue
+			elif random_num < wheat_spawn_chance/9:
+				# Determine position within the grid
+				var position = Vector3(x - field_size.x / 2, 1.25, y - field_size.y / 2)
+				var enemy = enemies.instantiate()
+				enemy.transform.origin = position
+				add_child(enemy)
+				
+			# elif spawn obstacles at /3 the chance
+			elif random_num < wheat_spawn_chance/3:
 				# Determine position within the grid
 				var position = Vector3(x - field_size.x / 2, 0.5, y - field_size.y / 2)
 
