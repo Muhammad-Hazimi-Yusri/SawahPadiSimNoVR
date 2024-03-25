@@ -26,7 +26,17 @@ func _process(delta):
 		retry.add_theme_color_override("font_color", Color.CRIMSON)
 		retry.text = "YOU DIED!!! \nPress Enter/Spacebar to retry!"
 		get_tree().paused = true
-			
+	
+	if get_tree().get_nodes_in_group("enemies").size() == 0 and get_tree().get_nodes_in_group("wheats").size() == 0:
+		$Control/MainMenu.show()
+		$Control/MainMenu/Label.hide()
+		$Control/MainMenu/Label2.hide()
+		var retry:Label = $Control/MainMenu/Start_Retry
+		retry.vertical_alignment = 0
+		retry.add_theme_color_override("font_color", Color.GOLD)
+		retry.text = "YOU WIN!!! \nPress Enter/Spacebar to play again!"
+		get_tree().paused = true
+	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and $Control/MainMenu.visible:
 		print("starto!")
