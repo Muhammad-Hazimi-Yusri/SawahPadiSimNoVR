@@ -117,9 +117,6 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 128.0
 offset_bottom = 39.0
-theme_override_colors/font_color = Color(0, 1, 0.807843, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
 text = "Current Size: 0"
 script = ExtResource("4_talod")
 
@@ -129,9 +126,6 @@ offset_left = 144.0
 offset_top = 16.0
 offset_right = 251.0
 offset_bottom = 39.0
-theme_override_colors/font_color = Color(0.858824, 0.541176, 0.317647, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
 text = "Wheat eaten: "
 script = ExtResource("4_ps1jn")
 
@@ -141,9 +135,6 @@ offset_left = 16.0
 offset_top = 48.0
 offset_right = 56.0
 offset_bottom = 71.0
-theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
 text = "HP: 100.00%"
 script = ExtResource("4_eyf0i")
 
@@ -153,9 +144,6 @@ offset_left = 144.0
 offset_top = 48.0
 offset_right = 206.0
 offset_bottom = 71.0
-theme_override_colors/font_color = Color(1, 0.835294, 0.0313726, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
 text = "Golds: 0"
 script = ExtResource("5_onu4d")
 
@@ -167,8 +155,6 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 40.0
 grow_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
 text = "ver alpha0.01"
 
 [node name="StatusPopup" type="Label" parent="Control"]

@@ -19,14 +19,16 @@ material = SubResource("StandardMaterial3D_d2db6")
 size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ekpjb"]
-size = Vector3(25, 3, 75)
+size = Vector3(27, 2.75, 75)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ycqm"]
-size = Vector3(27, 3, 75)
+size = Vector3(27, 2.75, 75)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4gq1q"]
 vertices = PackedVector3Array(-22, 0.5, -22, -22, 0.5, 22, 22, 0.5, 22, 22, 0.5, -22)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 4.0
+agent_radius = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_udi3j"]
 size = Vector2(45, 45)

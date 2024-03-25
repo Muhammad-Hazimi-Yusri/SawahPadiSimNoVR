@@ -25,10 +25,10 @@ func generate_wheat_field():
 	for x in range(field_size.x):
 		for y in range(field_size.y):
 			var random_num = randf()
-			# spawn enemies at /9 the chance
 			if Vector3(x - field_size.x / 2, 1.25, y - field_size.y / 2) == global_position:
 				continue
-			elif random_num < wheat_spawn_chance/9:
+			# spawn enemies at /15 the chance
+			elif random_num < wheat_spawn_chance/15:
 				# Determine position within the grid
 				var position = Vector3(x - field_size.x / 2, 1.25, y - field_size.y / 2)
 				var enemy = enemies.instantiate()
@@ -74,3 +74,5 @@ func generate_wheat_field():
 				wheat_stalk.transform.origin = position
 				wheat_stalk.scale.y = height
 				add_child(wheat_stalk)
+
+
