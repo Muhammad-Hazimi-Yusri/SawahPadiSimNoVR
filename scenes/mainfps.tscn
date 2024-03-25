@@ -18,7 +18,6 @@ process_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("3_erbgg")]
 unique_name_in_owner = true
-wheat_needed = 3
 
 [node name="Control" type="Control" parent="."]
 process_mode = 3
