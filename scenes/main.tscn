@@ -169,7 +169,7 @@ offset_right = 40.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "ver alpha0.01"
+text = "ver alpha0.02"
 
 [node name="StatusPopup" type="Label" parent="Control"]
 visible = false

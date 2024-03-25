@@ -34,6 +34,7 @@ func _unhandled_input(event):
 		Globals.health_points = 100
 		Globals.gold_collected = 0
 		Globals.wheat_eaten = 0
+		Globals.current_size = 0
 		
 		Globals.start = true
 		# This restarts the current scene.
