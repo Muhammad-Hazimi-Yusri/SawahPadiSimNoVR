@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MainMenu" type="ColorRect" parent="Control"]
 process_mode = 3
@@ -44,6 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14902, 0.14902, 0.14902, 0.945098)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Control/MainMenu"]
 layout_mode = 1
@@ -63,6 +65,7 @@ may the best rat soar to the sky!
 
 "
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="Control/MainMenu"]
 layout_mode = 1
@@ -91,6 +94,7 @@ WASD/ARROW KEYS TO MOVE
 SPACEBAR TO JUMP
 CTRL TO BECOME FASTER, SMALLER BUT LESS POWERFUL"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Start_Retry" type="Label" parent="Control/MainMenu"]
 layout_mode = 1
@@ -111,6 +115,7 @@ text = "Eat all good wheats and enemies to win!
 Press Enter/Spacebar to start!"
 horizontal_alignment = 1
 vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SizeLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -123,6 +128,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Current Size: 0"
 script = ExtResource("4_talod")
+metadata/_edit_use_anchors_ = true
 
 [node name="WheatLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -135,6 +141,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Wheat eaten: "
 script = ExtResource("4_ps1jn")
+metadata/_edit_use_anchors_ = true
 
 [node name="HPLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -147,6 +154,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "HP: 100.00%"
 script = ExtResource("4_eyf0i")
+metadata/_edit_use_anchors_ = true
 
 [node name="GoldLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -159,6 +167,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "Golds: 0"
 script = ExtResource("5_onu4d")
+metadata/_edit_use_anchors_ = true
 
 [node name="versionLabel" type="Label" parent="Control"]
 layout_mode = 1
@@ -171,6 +180,7 @@ grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "ver alpha0.02"
+metadata/_edit_use_anchors_ = true
 
 [node name="StatusPopup" type="Label" parent="Control"]
 visible = false

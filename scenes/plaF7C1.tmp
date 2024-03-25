@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bil3ap1iglekn"]
+
+[ext_resource type="Script" path="res://scripts/playerfps.gd" id="1_r1p72"]
+[ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="2_gsygb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w815s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehe2k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fqair"]
+radius = 0.6
+
+[node name="PlayerFPS" type="CharacterBody3D"]
+collision_mask = 14
+script = ExtResource("1_r1p72")
+CAPTURE_ON_START = null
+MOUSE_ACCEL = null
+KEY_BIND_MOUSE_SENS = null
+KEY_BIND_MOUSE_ACCEL = null
+speed = null
+wheat_needed = null
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_w815s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ehe2k")
+
+[node name="EnemyDetector" type="Area3D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fqair")
+
+[node name="Head" parent="." instance=ExtResource("2_gsygb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[connection signal="body_shape_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_shape_entered"]

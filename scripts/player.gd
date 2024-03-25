@@ -9,7 +9,6 @@ var scaled_down = false
 @export var wheat_needed := 10
 
 @onready var status_popup = get_parent().get_node("Control/StatusPopup")
-@onready var player_popup = $CameraPivot/Camera3D/PlayerPopup
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
