@@ -75,6 +75,9 @@ var scaled_down = false
 
 @onready var status_popup = get_parent().get_node("Control/StatusPopup")
 
+var is_main_menu_visible = false
+
+
 func _ready():
 	if Engine.is_editor_hint():
 		return
@@ -84,10 +87,20 @@ func _ready():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	head_start_pos = $Head.position
-
 	
+func _on_mainfps_main_menu_shown():
+	is_main_menu_visible = true
+	print("Main Menu shown")
+
+func _on_mainfps_main_menu_hidden():
+	is_main_menu_visible = false
+
 func _physics_process(delta):
 	if Engine.is_editor_hint():
+		return
+	
+	if is_main_menu_visible:
+		# Main menu is visible, disable player movement
 		return
 	
 	# Increment player tick, used in head bob motion
@@ -271,3 +284,4 @@ func create_label(text: String, duration: float, color: Color):
 
 func _on_label_timer_timeout(label: Label3D):
 	label.queue_free()
+

@@ -82,7 +82,8 @@ after you grow big enough!
 
 WASD/ARROW KEYS TO MOVE
 SPACEBAR TO JUMP
-CTRL TO BECOME FASTER, SMALLER BUT LESS POWERFUL"
+CTRL TO BECOME FASTER, SMALLER BUT LESS POWERFUL
+ESC TO PAUSEw"
 horizontal_alignment = 1
 
 [node name="Start_Retry" type="Label" parent="Control/MainMenu"]
@@ -187,4 +188,6 @@ script = ExtResource("8_hx47q")
 
 [node name="Timer" type="Timer" parent="Control/StatusPopup"]
 
+[connection signal="main_menu_hidden" from="." to="Player" method="_on_mainfps_main_menu_hidden"]
+[connection signal="main_menu_shown" from="." to="Player" method="_on_mainfps_main_menu_shown"]
 [connection signal="timeout" from="Control/StatusPopup/Timer" to="Control/StatusPopup" method="_on_timer_timeout"]

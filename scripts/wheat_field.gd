@@ -35,6 +35,7 @@ func create_label(text: String, duration: float, color: Color):
 	new_label.position.x = Globals.player.position.x
 	new_label.position.y = Globals.player.position.y
 	new_label.position.z = Globals.player.position.z
+	new_label.billboard = true
 	
 	get_parent().add_child(new_label)
 	var label_timer = Timer.new()
