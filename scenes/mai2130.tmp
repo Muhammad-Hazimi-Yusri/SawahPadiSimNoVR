@@ -1,0 +1,208 @@
+[gd_scene load_steps=10 format=3 uid="uid://bupparo0mgxu4"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5ihli"]
+[ext_resource type="PackedScene" uid="uid://cucab56fvc1v" path="res://scenes/world_level.tscn" id="2_5h6dv"]
+[ext_resource type="PackedScene" uid="uid://bil3ap1iglekn" path="res://scenes/playerfps.tscn" id="3_erbgg"]
+[ext_resource type="Script" path="res://scripts/SizeLabel.gd" id="4_jqi7r"]
+[ext_resource type="Script" path="res://scripts/WheatLabel.gd" id="5_hwqq6"]
+[ext_resource type="Script" path="res://scripts/HPLabel.gd" id="6_kj2v5"]
+[ext_resource type="Script" path="res://scripts/GoldLabel.gd" id="7_ev7g3"]
+[ext_resource type="Script" path="res://scripts/StatusPopup.gd" id="8_hx47q"]
+[ext_resource type="PackedScene" uid="uid://dgygkbtm0burn" path="res://addons/quiver_leaderboards/leaderboard_ui.tscn" id="9_i4h3o"]
+
+[node name="mainfps" type="Node"]
+process_mode = 3
+script = ExtResource("1_5ihli")
+
+[node name="WorldLevel" parent="." instance=ExtResource("2_5h6dv")]
+process_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("3_erbgg")]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="ColorRect" parent="Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.14902, 0.14902, 0.945098)
+
+[node name="Label" type="Label" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -344.0
+offset_top = 16.0
+offset_right = 343.0
+offset_bottom = 247.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.745098, 0, 1)
+text = "Welcome to RFRat.io, experience the thrills and joy
+of becoming the best Rice Field Rat (RFRat, not Radio Freq Rat bruh) 
+in this world. Conquer this terraced rice field, and eat your benefactors, 
+may the best rat soar to the sky!
+
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -188.0
+offset_right = 248.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Instructions:
+
+Purple are enemies, they hit hard!
+Gold tiles are wheat, eat more to grow!
+Red tiles are bad wheat, avoid when possible!
+Obstacles and enemies can stuck you, beware!
+
+Eat your enemies and destroy obstacles to get golds
+after you grow big enough!
+
+WASD/ARROW KEYS TO MOVE
+SPACEBAR TO JUMP
+CTRL TO BECOME FASTER, SMALLER BUT LESS POWERFUL
+ESC TO PAUSEw"
+horizontal_alignment = 1
+
+[node name="Start_Retry" type="Label" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -44.0
+offset_right = 576.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0431373, 0.905882, 0.886275, 1)
+theme_override_font_sizes/font_size = 30
+text = "Eat all good wheats and enemies to win!
+Press Enter/Spacebar to start!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="WheatLeaderboard" parent="Control/MainMenu" instance=ExtResource("9_i4h3o")]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -96.0
+offset_right = -96.0
+grow_horizontal = 0
+leaderboard_id = "rfratio-wheat-5caJ"
+
+[node name="Timer" type="Timer" parent="Control/MainMenu"]
+wait_time = 2.0
+
+[node name="SizeLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 1, 0.807843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Current Size: 0"
+script = ExtResource("4_jqi7r")
+
+[node name="WheatLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 16.0
+offset_right = 251.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.858824, 0.541176, 0.317647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Wheat eaten: "
+script = ExtResource("5_hwqq6")
+
+[node name="HPLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 56.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "HP: 100.00%"
+script = ExtResource("6_kj2v5")
+
+[node name="GoldLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 206.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(1, 0.835294, 0.0313726, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Golds: 0"
+script = ExtResource("7_ev7g3")
+
+[node name="versionLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "ver alpha0.12"
+
+[node name="StatusPopup" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.937255, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "TEST
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+script = ExtResource("8_hx47q")
+
+[node name="Timer" type="Timer" parent="Control/StatusPopup"]
+
+[connection signal="main_menu_hidden" from="." to="Player" method="_on_mainfps_main_menu_hidden"]
+[connection signal="main_menu_shown" from="." to="Player" method="_on_mainfps_main_menu_shown"]
+[connection signal="timeout" from="Control/MainMenu/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/StatusPopup/Timer" to="Control/StatusPopup" method="_on_timer_timeout"]

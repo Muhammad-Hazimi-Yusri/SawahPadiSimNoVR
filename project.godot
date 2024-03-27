@@ -22,10 +22,17 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
+Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
+Analytics="*res://addons/quiver_analytics/analytics.tscn"
 
 [display]
 
 mouse_cursor/custom_image="res://assets/icon.png"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/quiver_analytics/plugin.cfg", "res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
 
 [input]
 
@@ -73,6 +80,10 @@ ctrl_speed={
 3d_physics/layer_2="enemies"
 3d_physics/layer_3="world"
 3d_physics/layer_4="wheats"
+
+[quiver]
+
+general/auth_token="awBZvZFCnjYnzzUAydb9gWK1I7RjSShGONiGPZlQ"
 
 [rendering]
 

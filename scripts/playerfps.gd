@@ -134,7 +134,7 @@ func _process(delta):
 		self.scale *= 1.25
 	elif Globals.wheat_eaten >= 5 * wheat_needed and Globals.current_size < 3 and not scaled_down:
 		Globals.current_size = 3
-		status_popup.show_status_popup("You can now eat the enemies! They give coins when eaten.\nUsing CTRL will still hurt you though.", 5)
+		status_popup.show_status_popup("You can now eat the enemies! They give coins and HP when eaten.", 5)
 		speed += 2.5
 		self.scale *= 1.25
 	elif Globals.wheat_eaten >= 10 * wheat_needed and Globals.current_size < 4 and not scaled_down:
