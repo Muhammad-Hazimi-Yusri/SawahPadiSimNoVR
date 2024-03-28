@@ -1,28 +1,69 @@
-[gd_scene load_steps=17 format=3 uid="uid://cucab56fvc1v"]
+[gd_scene load_steps=30 format=3 uid="uid://cucab56fvc1v"]
 
-[ext_resource type="Texture2D" uid="uid://b5ybx8urdo7lp" path="res://assets/testFloor.png" id="1_k8yxx"]
+[ext_resource type="Texture2D" uid="uid://bbaijic3fjfpb" path="res://assets/floor1.png" id="1_i7woc"]
 [ext_resource type="PackedScene" uid="uid://cxkgd1ampq3op" path="res://scenes/wheat_field.tscn" id="2_84rxh"]
 [ext_resource type="Script" path="res://scripts/BedrockMesh.gd" id="2_yiy2i"]
 [ext_resource type="PackedScene" uid="uid://dbmscitg1jw2i" path="res://scenes/bad_wheat_field.tscn" id="4_k2wgx"]
 [ext_resource type="PackedScene" uid="uid://c1cj4tpysolea" path="res://scenes/obstacles.tscn" id="5_l7v27"]
 [ext_resource type="PackedScene" uid="uid://bj1oxv2kmn0k6" path="res://scenes/enemies.tscn" id="6_e7m86"]
+[ext_resource type="Texture2D" uid="uid://d4nbolr84l6ny" path="res://assets/floor2.png" id="7_qdndv"]
+[ext_resource type="Texture2D" uid="uid://0n0kjih1adpg" path="res://assets/floor3.png" id="8_ml5dv"]
+[ext_resource type="Texture2D" uid="uid://dex2jpjuuuqqe" path="res://assets/floor4.png" id="9_ov2jd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bdyg"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2db6"]
-albedo_texture = ExtResource("1_k8yxx")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oog84"]
+albedo_texture = ExtResource("1_i7woc")
 uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wy1q"]
-material = SubResource("StandardMaterial3D_d2db6")
+material = SubResource("StandardMaterial3D_oog84")
 size = Vector3(100, 1, 100)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_iki7n"]
+size = Vector3(27, 16, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7lkv"]
+albedo_texture = ExtResource("9_ov2jd")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_njf8w"]
+material = SubResource("StandardMaterial3D_f7lkv")
+size = Vector3(75, 16, 150)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ekpjb"]
-size = Vector3(27, 2.75, 75)
+size = Vector3(50, 2.75, 150)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wln4n"]
+albedo_texture = ExtResource("7_qdndv")
+uv1_scale = Vector3(50, 50, 50)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ycqm"]
-size = Vector3(27, 2.75, 75)
+material = SubResource("StandardMaterial3D_wln4n")
+size = Vector3(50, 2.75, 150)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_komop"]
+size = Vector3(54, 7, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3au6"]
+albedo_texture = ExtResource("8_ml5dv")
+uv1_scale = Vector3(25, 25, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_avnix"]
+material = SubResource("StandardMaterial3D_i3au6")
+size = Vector3(54, 7, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ej02y"]
+size = Vector3(54, 7, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoe2c"]
+albedo_texture = ExtResource("8_ml5dv")
+uv1_scale = Vector3(25, 25, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5wix1"]
+material = SubResource("StandardMaterial3D_hoe2c")
+size = Vector3(54, 7, 50)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4gq1q"]
 vertices = PackedVector3Array(-22, 0.5, -22, -22, 0.5, 22, 22, 0.5, 22, 22, 0.5, -22)
@@ -67,35 +108,34 @@ enemies = ExtResource("6_e7m86")
 collision_layer = 5
 collision_mask = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, 12)
+[node name="floor4" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, 37)
+shape = SubResource("BoxShape3D_iki7n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 1.92518)
+mesh = SubResource("BoxMesh_njf8w")
+
+[node name="floor2" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, -50)
 shape = SubResource("BoxShape3D_ekpjb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/floor2"]
 mesh = SubResource("BoxMesh_5ycqm")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, 0, -37)
-shape = SubResource("BoxShape3D_ekpjb")
+[node name="floor3" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0, 0)
+shape = SubResource("BoxShape3D_komop")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/CollisionShape3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-mesh = SubResource("BoxMesh_5ycqm")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/floor3"]
+mesh = SubResource("BoxMesh_avnix")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13, 0, 37)
-shape = SubResource("BoxShape3D_ekpjb")
+[node name="floor3_2" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0, -1)
+shape = SubResource("BoxShape3D_ej02y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/CollisionShape3D3"]
-mesh = SubResource("BoxMesh_5ycqm")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Bedrock/SecondFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -13)
-shape = SubResource("BoxShape3D_ekpjb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/CollisionShape3D4"]
-mesh = SubResource("BoxMesh_5ycqm")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bedrock/SecondFloor/floor3_2"]
+mesh = SubResource("BoxMesh_5wix1")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Bedrock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)

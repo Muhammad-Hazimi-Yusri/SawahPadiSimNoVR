@@ -1,13 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://bupparo0mgxu4"]
+[gd_scene load_steps=15 format=3 uid="uid://bupparo0mgxu4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5ihli"]
 [ext_resource type="PackedScene" uid="uid://cucab56fvc1v" path="res://scenes/world_level.tscn" id="2_5h6dv"]
 [ext_resource type="PackedScene" uid="uid://bil3ap1iglekn" path="res://scenes/playerfps.tscn" id="3_erbgg"]
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="4_0r4fp"]
 [ext_resource type="Script" path="res://scripts/SizeLabel.gd" id="4_jqi7r"]
 [ext_resource type="Script" path="res://scripts/WheatLabel.gd" id="5_hwqq6"]
+[ext_resource type="PackedScene" uid="uid://6h4i4v0rwm58" path="res://addons/quiver_leaderboards/WheatLeaderboardScene.tscn" id="5_qpaes"]
 [ext_resource type="Script" path="res://scripts/HPLabel.gd" id="6_kj2v5"]
+[ext_resource type="PackedScene" uid="uid://d3eh380vpnojh" path="res://addons/quiver_leaderboards/GoldLeaderboardScene.tscn" id="6_xbrjj"]
+[ext_resource type="PackedScene" uid="uid://dinfwwlbscj6u" path="res://addons/quiver_leaderboards/TimeLeaderboardScene.tscn" id="7_am2ki"]
 [ext_resource type="Script" path="res://scripts/GoldLabel.gd" id="7_ev7g3"]
+[ext_resource type="Script" path="res://scripts/Name.gd" id="8_2xe8l"]
 [ext_resource type="Script" path="res://scripts/StatusPopup.gd" id="8_hx47q"]
+[ext_resource type="Script" path="res://scripts/TimerLabel.gd" id="12_8i43u"]
 
 [node name="mainfps" type="Node"]
 process_mode = 3
@@ -37,6 +43,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14902, 0.14902, 0.14902, 0.945098)
+script = ExtResource("4_0r4fp")
+wheat_leaderboard = ExtResource("5_qpaes")
+gold_leaderboard = ExtResource("6_xbrjj")
+time_leaderboard = ExtResource("7_am2ki")
 
 [node name="Label" type="Label" parent="Control/MainMenu"]
 layout_mode = 1
@@ -83,7 +93,7 @@ after you grow big enough!
 WASD/ARROW KEYS TO MOVE
 SPACEBAR TO JUMP
 CTRL TO BECOME FASTER, SMALLER BUT LESS POWERFUL
-ESC TO PAUSEw"
+ESC TO PAUSE"
 horizontal_alignment = 1
 
 [node name="Start_Retry" type="Label" parent="Control/MainMenu"]
@@ -105,6 +115,72 @@ text = "Eat all good wheats and enemies to win!
 Press Enter/Spacebar to start!"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="WheatLeaderboard" type="Button" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -472.0
+offset_right = -352.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go to Wheat Leaderboard"
+
+[node name="GoldLeaderboard" type="Button" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -424.0
+offset_right = -352.0
+offset_bottom = -393.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go to Gold Leaderboard"
+
+[node name="TimeLeaderboard" type="Button" parent="Control/MainMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -376.0
+offset_right = -352.0
+offset_bottom = -345.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go to Time Leaderboard"
+
+[node name="Name" type="LineEdit" parent="Control/MainMenu"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 136.0
+offset_right = 296.0
+offset_bottom = 167.0
+placeholder_text = "Name for score submission"
+expand_to_text_length = true
+clear_button_enabled = true
+script = ExtResource("8_2xe8l")
+
+[node name="Label" type="Label" parent="Control/MainMenu/Name"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -48.0
+offset_right = 197.0
+offset_bottom = 27.0
+text = "Score is automatically submitted 
+when game is won!
+Name:"
 
 [node name="SizeLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -154,6 +230,18 @@ theme_override_constants/outline_size = 4
 text = "Golds: 0"
 script = ExtResource("7_ev7g3")
 
+[node name="TimerLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 8.0
+offset_right = 1022.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0.835294, 0.0313726, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Time: 0"
+script = ExtResource("12_8i43u")
+
 [node name="versionLabel" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
@@ -164,7 +252,7 @@ offset_right = 40.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "ver alpha0.02"
+text = "NSE Gamejam"
 
 [node name="StatusPopup" type="Label" parent="Control"]
 visible = false
@@ -190,4 +278,8 @@ script = ExtResource("8_hx47q")
 
 [connection signal="main_menu_hidden" from="." to="Player" method="_on_mainfps_main_menu_hidden"]
 [connection signal="main_menu_shown" from="." to="Player" method="_on_mainfps_main_menu_shown"]
+[connection signal="pressed" from="Control/MainMenu/WheatLeaderboard" to="Control/MainMenu" method="_on_wheat_leaderboard_pressed"]
+[connection signal="pressed" from="Control/MainMenu/GoldLeaderboard" to="Control/MainMenu" method="_on_gold_leaderboard_pressed"]
+[connection signal="pressed" from="Control/MainMenu/TimeLeaderboard" to="Control/MainMenu" method="_on_time_leaderboard_pressed"]
+[connection signal="text_changed" from="Control/MainMenu/Name" to="." method="_on_name_text_changed"]
 [connection signal="timeout" from="Control/StatusPopup/Timer" to="Control/StatusPopup" method="_on_timer_timeout"]
