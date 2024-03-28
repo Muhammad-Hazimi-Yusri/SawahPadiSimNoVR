@@ -1,10 +1,8 @@
 extends Node
 
 @onready var player = $Player
-@onready var Name = $Control/MainMenu/Name.text
 
 @export var enemy_repath_timer = 1;
-
 var timer: float = 0.0
 
 signal main_menu_shown
@@ -13,7 +11,7 @@ signal main_menu_hidden
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if Globals.start:
-		print("game started, player name is: " + str(Name))
+		print("starto ready")
 		get_tree().paused = false
 		$Control/MainMenu.hide()
 		emit_signal("main_menu_hidden")
@@ -44,7 +42,6 @@ func _process(delta):
 		retry.vertical_alignment = 0
 		retry.add_theme_color_override("font_color", Color.GOLD)
 		retry.text = "YOU WIN!!! \nPress Enter/Spacebar to play again!"
-		await Leaderboards.post_guest_score("rfratio-wheat-5caJ", Globals.wheat_eaten, str(Name))
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		emit_signal("main_menu_shown")
@@ -82,11 +79,4 @@ func _physics_process(delta):
 	if timer >= enemy_repath_timer:  # Check if it's been at least 1 second
 		timer = 0.0  # Reset the timer
 		get_tree().call_group("enemies", "actor_setup", player.global_position)
-
-
-
-func _on_timer_timeout():
-	$Control/MainMenu/WheatLeaderboard.hide()
-	print("Reshowing leaderboard")
-	$Control/MainMenu/WheatLeaderboard.show()
 
